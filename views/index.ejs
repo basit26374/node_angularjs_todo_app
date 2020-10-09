@@ -2,10 +2,12 @@
 <html>
   <head>
     <title><%= title %></title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
-    <script type="text/javascript" src="./app.js"></script>
+    <script type="text/javascript" src="module.js"></script>
+
     <link rel='stylesheet' href='../public/style.css' />
   </head>
   <body ng-app="app">
@@ -16,15 +18,15 @@
     <script type="text/ng-template" id="/todos.html">
         Search: <input type="text" ng-model="search.name">
         <ul>
-          <li ng-repeat="todo in todos | filter: search">
-            <input type="checkbox" ng-model="todo.completed" ng-change="update($index)">
-            <p ng-show="!editing[$index]" >{{todo.name}}</p>
-            <button ng-show="!editing[$index]" ng-click="edit($index)">edit</button>
-            <button ng-show="!editing[$index]" ng-click="remove($index)">remove</button>
+          <li ng-repeat="todo in todos">
+            <!-- <input type="checkbox" ng-model="todo.completed" ng-change="update($index)"> -->
+            <a href="#/{{todo._id}}">{{todo.name}}</a>
+            <!-- <button ng-show="!editing[$index]" ng-click="edit($index)">edit</button> -->
+            <!-- <button ng-show="!editing[$index]" ng-click="remove($index)">remove</button> -->
   
-            <input ng-show="editing[$index]" type="text" ng-model="todo.name">
-            <button ng-show="editing[$index]" ng-click="update($index)">update</button>
-            <button ng-show="editing[$index]" ng-click="cancel($index)">cancel</button>
+            <!-- <input ng-show="editing[$index]" type="text" ng-model="todo.name"> -->
+            <!-- <button ng-show="editing[$index]" ng-click="update($index)">update</button> -->
+            <!-- <button ng-show="editing[$index]" ng-click="cancel($index)">cancel</button> -->
           </li>
         </ul>
         New task <input type="text" ng-model="newTodo"><button ng-click="save()">Create</button>
