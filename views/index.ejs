@@ -25,7 +25,7 @@
             <button ng-show="!editing[$index]" ng-click="remove($index)">remove</button>
   
             <input ng-show="editing[$index]" type="text" ng-model="todo.name">
-            <!-- <button ng-show="editing[$index]" ng-click="update($index)">update</button> -->
+            <button ng-show="editing[$index]" ng-click="update($index)">update</button>
             <button ng-show="editing[$index]" ng-click="cancel($index)">cancel</button>
           </li>
         </ul>

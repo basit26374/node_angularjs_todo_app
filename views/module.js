@@ -6,7 +6,7 @@ angular.module('app', ['ngRoute', 'ngResource'])
 
 .factory('Todos', ['$resource', function($resource){
   return $resource('/todos/:id', null, {
-    'update': { method:'PUT' }
+    'update': { method:'POST' }
   });
 }])
 
@@ -39,6 +39,12 @@ angular.module('app', ['ngRoute', 'ngResource'])
 
   $scope.cancel = function(index) {
     $scope.todos[index] = angular.copy($scope.editing[index]); // Put previous data into todos
+    $scope.editing[index] = false;
+  }
+
+  $scope.update = function(index) {
+    var todo_updated = $scope.todos[index];
+    Todos.update({id: todo_updated._id}, todo_updated);
     $scope.editing[index] = false;
   }
 }])
