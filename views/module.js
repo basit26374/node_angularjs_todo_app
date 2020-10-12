@@ -34,7 +34,12 @@ angular.module('app', ['ngRoute', 'ngResource'])
   }
 
   $scope.edit = function(index) {
-    $scope.editing[index] = angular.copy($scope.todos[index])
+    $scope.editing[index] = angular.copy($scope.todos[index]);
+  }
+
+  $scope.cancel = function(index) {
+    $scope.todos[index] = angular.copy($scope.editing[index]); // Put previous data into todos
+    $scope.editing[index] = false;
   }
 }])
 
