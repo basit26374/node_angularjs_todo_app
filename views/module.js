@@ -13,6 +13,7 @@ angular.module('app', ['ngRoute', 'ngResource'])
 .controller('TodoController', ['$scope','Todos', function ($scope, Todos) {
 
   $scope.todos = Todos.query();
+  $scope.editing = []
 
   $scope.save = function() {
 
@@ -30,6 +31,10 @@ angular.module('app', ['ngRoute', 'ngResource'])
     Todos.remove({id: todo._id}, function() {
       $scope.todos.splice(index, 1);
     });
+  }
+
+  $scope.edit = function(index) {
+    $scope.editing[index] = angular.copy($scope.todos[index])
   }
 }])
 
