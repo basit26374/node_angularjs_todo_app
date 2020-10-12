@@ -16,7 +16,6 @@ angular.module('app', ['ngRoute', 'ngResource'])
 
   $scope.save = function() {
 
-    console.log($scope.newTodo)
     if(!$scope.newTodo || $scope.newTodo.length < 1) return;
     var todo = new Todos({ name: $scope.newTodo, completed: false });
     
@@ -24,6 +23,13 @@ angular.module('app', ['ngRoute', 'ngResource'])
       $scope.todos.push(todo)
       $scope.newTodo = ""       // clear textbox
     })
+  }
+
+  $scope.remove = function(index) {
+    var todo = $scope.todos[index];
+    Todos.remove({id: todo._id}, function() {
+      $scope.todos.splice(index, 1);
+    });
   }
 }])
 
