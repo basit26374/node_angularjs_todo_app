@@ -32,7 +32,7 @@ router.delete('/:id', function(req, res, next) {
     });
 })
 
-/* PUT /todos/:id */
+/* POST /todos/:id */
 // Update task 
 router.post('/:id', function(req, res, next) {
     Todo.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
