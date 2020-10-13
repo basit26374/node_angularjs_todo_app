@@ -32,5 +32,15 @@
         New task <input type="text" ng-model="newTodo"><button ng-click="save()">Create</button>
       </script>
 
+      <script type="text/ng-template" id="/todoDetails.html">
+        <h1>{{ todo.name }}</h1>
+        completed: <input type="checkbox" ng-model="todo.completed"><br>
+        note: <textarea ng-model="todo.note"></textarea><br><br>
+  
+        <button ng-click="update()">update</button>
+        <button ng-click="remove()">remove</button>
+        <a href="/">Cancel</a>
+      </script>
+
   </body>
 </html>

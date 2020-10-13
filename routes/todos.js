@@ -41,4 +41,13 @@ router.post('/:id', function(req, res, next) {
     });
 });
 
+/* GET /todos/:id . */
+// Get/Fetch task by id
+router.get('/:id', function(req, res, next) {
+    Todo.findById(req.params.id, req.body, function(err, post) {
+        if (err) return next(err);
+        res.json(post)
+    });
+});
+
 module.exports = router;

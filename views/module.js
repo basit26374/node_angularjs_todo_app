@@ -49,6 +49,10 @@ angular.module('app', ['ngRoute', 'ngResource'])
   }
 }])
 
+.controller('TodoDetailCtrl', ['$scope', '$routeParams', 'Todos', '$location', function ($scope, $routeParams, Todos, $location) {
+  $scope.todo = Todos.get({id: $routeParams.id });
+}])
+
 .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -56,8 +60,8 @@ angular.module('app', ['ngRoute', 'ngResource'])
         controller: 'TodoController'
       })
 
-    //   .when('/:id', {
-    //     templateUrl: '/todoDetails.html',
-    //     controller: 'TodoDetailCtrl'
-    //  });
+      .when('/:id', {
+        templateUrl: '/todoDetails.html',
+        controller: 'TodoDetailCtrl'
+     });
   }]);
